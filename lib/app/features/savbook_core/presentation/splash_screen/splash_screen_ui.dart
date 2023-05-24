@@ -174,7 +174,7 @@ class SplashScreenUi extends StatelessWidget {
   }
 
   Widget component(
-      IconDataicon, String hintText, bool isPassword, bool isEmail) {
+      IconData icon, String hintText, bool isPassword, bool isEmail) {
     Size size = Get.mediaQuery.size;
     return Container(
       alignment: Alignment.center,
@@ -191,7 +191,7 @@ class SplashScreenUi extends StatelessWidget {
         keyboardType: isEmail ? TextInputType.emailAddress : TextInputType.text,
         decoration: InputDecoration(
           prefixIcon: Icon(
-            Icons.email,
+            icon,
             color: Colors.white.withOpacity(.8),
           ),
           border: InputBorder.none,
