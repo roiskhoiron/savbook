@@ -7,10 +7,10 @@ import 'package:flutter/services.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:get/get.dart';
 
-import 'splash_screen_logic.dart';
+import 'login_logic.dart';
 
-class SplashScreenUi extends StatelessWidget {
-  final logic = Get.find<SplashScreenLogic>();
+class LoginUi extends StatelessWidget {
+  final logic = Get.find<LoginLogic>();
 
   static const String routeName = '/';
 
@@ -37,6 +37,7 @@ class SplashScreenUi extends StatelessWidget {
                   child: Padding(
                     padding: const EdgeInsets.all(8.0),
                     child: JelloIn(
+                      delay: 1.seconds,
                       child: Image(
                         image: const AssetImage('assets/images/logo.png'),
                         width: Get.width * .4,
@@ -76,6 +77,7 @@ class SplashScreenUi extends StatelessWidget {
                               component(
                                 Icons.email_outlined,
                                 'Email...',
+                                controller: logic.emailController,
                                 false,
                                 true,
                               ),
@@ -83,6 +85,7 @@ class SplashScreenUi extends StatelessWidget {
                               component(
                                 Icons.lock_outline,
                                 'Password...',
+                                controller: logic.passwordController,
                                 true,
                                 false,
                               ),
@@ -131,9 +134,7 @@ class SplashScreenUi extends StatelessWidget {
                                 highlightColor: Colors.transparent,
                                 onTap: () {
                                   HapticFeedback.lightImpact();
-                                  Fluttertoast.showToast(
-                                    msg: 'Sign-In button pressed',
-                                  );
+                                  logic.requestLogin();
                                 },
                                 child: Container(
                                   margin: EdgeInsets.only(
@@ -174,7 +175,8 @@ class SplashScreenUi extends StatelessWidget {
   }
 
   Widget component(
-      IconData icon, String hintText, bool isPassword, bool isEmail) {
+      IconData icon, String hintText, bool isPassword, bool isEmail,
+      {required TextEditingController controller}) {
     Size size = Get.mediaQuery.size;
     return Container(
       alignment: Alignment.center,
@@ -189,6 +191,7 @@ class SplashScreenUi extends StatelessWidget {
         ),
         obscureText: isPassword,
         keyboardType: isEmail ? TextInputType.emailAddress : TextInputType.text,
+        controller: controller,
         decoration: InputDecoration(
           prefixIcon: Icon(
             icon,

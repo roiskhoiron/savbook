@@ -1,16 +1,23 @@
 import 'package:get/get.dart';
-import 'package:savbook/app/features/savbook_core/presentation/splash_screen/splash_screen_ui.dart';
+import 'package:savbook/app/features/savbook_core/presentation/dashboard/dashboard_ui.dart';
+import 'package:savbook/app/features/savbook_core/presentation/login/login_binding.dart';
+import 'package:savbook/app/features/savbook_core/presentation/login/login_ui.dart';
 
-import '../app/features/savbook_core/presentation/splash_screen/splash_screen_binding.dart';
+import '../app/features/savbook_core/presentation/dashboard/dashboard_binding.dart';
 
 class AppRouter {
-  static const initial = SplashScreenUi.routeName;
+  static const initial = LoginUi.routeName;
 
   static final routes = GetPage(
     name: initial,
-    page: () => SplashScreenUi(),
-    binding: SplashScreenBinding(),
-    children: [],
+    page: () => LoginUi(),
+    binding: LoginBinding(),
+    children: [
+      GetPage(
+          name: DashboardUi.routeName,
+          page: () => DashboardUi(),
+          binding: DashboardBinding()),
+    ],
   );
 
   static String findRoute(String page) {

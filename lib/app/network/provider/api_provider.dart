@@ -21,8 +21,6 @@ var uploadProgresStories = 0.0.obs;
 
 class APIProvider {
   static const String tag = 'APIProvider';
-  static const String tagStories = 'APIProvider-Stories';
-  static const String tagNews = 'APIProvider-News';
   String baseUrl;
 
   late bool isConnected = false;
