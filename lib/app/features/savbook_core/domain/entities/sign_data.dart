@@ -2,7 +2,7 @@ import '../validators/sign_in_validator.dart';
 import '../valueobjects/email.dart';
 import '../valueobjects/password.dart';
 
-class SignData extends SignInValidator{
+class SignData with SignInValidator{
   final Email email;
   final Password password;
 
@@ -22,6 +22,6 @@ class SignData extends SignInValidator{
   @override
   int get hashCode => email.hashCode ^ password.hashCode;
 
-  @override
+
   bool validate() => super.onValidate(email: email, password: password);
 }

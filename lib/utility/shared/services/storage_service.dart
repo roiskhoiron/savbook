@@ -31,10 +31,10 @@ class StorageService extends GetxService {
     return result;
   }
 
-  static Future setPref(
+  static Future<bool> setPref(
       {required StorageEnum key, required String value}) async {
     var prefs = await _instance;
-    await prefs.setString(key.name, value);
+    return await prefs.setString(key.name, value);
     // Get.log('$tag setPrefString ${key.name} => done');
   }
 

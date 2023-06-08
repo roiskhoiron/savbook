@@ -15,8 +15,8 @@ class GenericException implements Exception {
         return '${code.value}: $info\nis not found.';
       case NotUniqueException:
         return '${code.value}: $info\nalready exists.';
-      case NullEmptyException:
-        return '${code.value}\nmust not be null or empty.';
+      case EmptyException:
+        return '${code.value}\nmust not be  empty.';
       case LengthException:
         return '${code.value} must be $info letters or shorter.';
       case FalseException:
@@ -34,12 +34,25 @@ class GenericException implements Exception {
           default:
             return info.toString();
         }
+      case RequestFailureException:
+        return 'sorry, $info';
       case FileSizeException:
         return 'sorry, $info';
       default:
         return 'Unknown error occurred.';
     }
   }
+}
+
+class LocalStorageException extends GenericException {
+  LocalStorageException({required ExceptionCode code, required String value})
+      : super(code: code, info: value);
+}
+
+class RequestFailureException extends GenericException {
+  RequestFailureException({required ExceptionCode code, required String target})
+      : assert(target.isNotEmpty),
+        super(code: code, info: target);
 }
 
 class NotFoundException extends GenericException {
@@ -54,8 +67,8 @@ class NotUniqueException extends GenericException {
         super(code: code, info: value);
 }
 
-class NullEmptyException extends GenericException {
-  NullEmptyException({required ExceptionCode code}) : super(code: code);
+class EmptyException extends GenericException {
+  EmptyException({required ExceptionCode code, String value = ''}) : super(code: code, info: value);
 }
 
 class LengthException extends GenericException {
@@ -108,11 +121,12 @@ enum ExceptionCode {
   signInEmailIsEmpty,
   signInPasswordIsEmpty,
   signInTermsIsEmpty,
+  signInRequestFailure,
   noInternet,
   serverFailure,
   notExist,
   notMatch,
-  fileSize,
+  fileSize, localStorageFailure, signInTokenIsEmpty,
 }
 
 extension ExceptionCodeValue on ExceptionCode {

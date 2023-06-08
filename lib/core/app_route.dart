@@ -1,7 +1,24 @@
 import 'package:get/get.dart';
+import 'package:savbook/app/features/savbook_core/presentation/aset_dihapus/aset_dihapus_binding.dart';
+import 'package:savbook/app/features/savbook_core/presentation/aset_rusak/aset_rusak_binding.dart';
+import 'package:savbook/app/features/savbook_core/presentation/cabang/cabang_binding.dart';
+import 'package:savbook/app/features/savbook_core/presentation/daftar_persetujuan/daftar_persetujuan_binding.dart';
 import 'package:savbook/app/features/savbook_core/presentation/dashboard/dashboard_ui.dart';
+import 'package:savbook/app/features/savbook_core/presentation/data_karyawan/data_karyawan_binding.dart';
+import 'package:savbook/app/features/savbook_core/presentation/data_karyawan_hapus/data_karyawan_hapus_binding.dart';
+import 'package:savbook/app/features/savbook_core/presentation/data_karyawan_resign/data_karyawan_resign_binding.dart';
+import 'package:savbook/app/features/savbook_core/presentation/dokumen_pengajuan/dokumen_pengajuan_binding.dart';
+import 'package:savbook/app/features/savbook_core/presentation/dokumen_pengajuan_aset/dokumen_pengajuan_aset_binding.dart';
+import 'package:savbook/app/features/savbook_core/presentation/formulir/formulir_binding.dart';
+import 'package:savbook/app/features/savbook_core/presentation/hak_akses_pengguna/hak_akses_pengguna_binding.dart';
+import 'package:savbook/app/features/savbook_core/presentation/layanan_karyawan/layanan_karyawan_binding.dart';
 import 'package:savbook/app/features/savbook_core/presentation/login/login_binding.dart';
 import 'package:savbook/app/features/savbook_core/presentation/login/login_ui.dart';
+import 'package:savbook/app/features/savbook_core/presentation/pengguna/pengguna_binding.dart';
+import 'package:savbook/app/features/savbook_core/presentation/persetujuan/persetujuan_binding.dart';
+import 'package:savbook/app/features/savbook_core/presentation/profil_perusahaan/profil_perusahaan_binding.dart';
+import 'package:savbook/app/features/savbook_core/presentation/riwayat_persetujuan/riwayat_persetujuan_binding.dart';
+import 'package:savbook/app/features/savbook_core/presentation/semua_aset/semua_aset_binding.dart';
 
 import '../app/features/savbook_core/presentation/dashboard/dashboard_binding.dart';
 
@@ -16,7 +33,29 @@ class AppRouter {
       GetPage(
           name: DashboardUi.routeName,
           page: () => DashboardUi(),
-          binding: DashboardBinding()),
+          middlewares: [
+            // AuthMiddleware(),
+          ],
+          bindings: [
+            DashboardBinding(),
+            DataKaryawanBinding(),
+            DokumenPengajuanBinding(),
+            DataKaryawanResignBinding(),
+            DataKaryawanHapusBinding(),
+            ProfilPerusahaanBinding(),
+            LayananKaryawanBinding(),
+            SemuaAsetBinding(),
+            DokumenPengajuanAsetBinding(),
+            AsetRusakBinding(),
+            AsetDihapusBinding(),
+            DaftarPersetujuanBinding(),
+            RiwayatPersetujuanBinding(),
+            CabangBinding(),
+            HakAksesPenggunaBinding(),
+            PenggunaBinding(),
+            PersetujuanBinding(),
+            FormulirBinding()
+          ]),
     ],
   );
 

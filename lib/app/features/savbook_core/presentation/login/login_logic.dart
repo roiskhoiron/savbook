@@ -22,6 +22,13 @@ class LoginLogic extends GetxController {
   void requestLogin() {
     var result =
         _app.login(email: emailController.text, psw: passwordController.text);
-    Get.toNamed(DashboardUi.routeName);
+    result.then((value) {
+      value.fold((l) {
+        Get.snackbar('Sorry', l.message);
+      }, (r) {
+        Get.snackbar('Success', 'Login success');
+        Get.offAllNamed(DashboardUi.routeName);
+      });
+    });
   }
 }
