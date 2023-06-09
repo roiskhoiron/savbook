@@ -21,6 +21,7 @@ class ProfilPerusahaanUi extends StatelessWidget {
                 'Profil Perusahaan',
                 style: GoogleFonts.montserrat(
                   fontSize: 14,
+                  color: Color(0xff00525e),
                   fontWeight: FontWeight.bold,
                 ),
               ),
