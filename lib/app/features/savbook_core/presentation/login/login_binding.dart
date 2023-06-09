@@ -2,7 +2,7 @@ import 'package:get/get.dart';
 import 'package:savbook/app/features/savbook_core/application/login_app_service.dart';
 import 'package:savbook/app/features/savbook_core/infrastructure/datasource/login_local_data_source.dart';
 import 'package:savbook/app/features/savbook_core/infrastructure/datasource/login_remote_data_source.dart';
-import 'package:savbook/app/features/savbook_core/infrastructure/login_factory.dart';
+import 'package:savbook/app/features/savbook_core/infrastructure/factories/login_factory.dart';
 import 'package:savbook/app/features/savbook_core/infrastructure/repository/login_repository.dart';
 
 import 'login_logic.dart';

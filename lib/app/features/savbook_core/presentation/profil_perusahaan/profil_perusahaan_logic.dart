@@ -18,11 +18,11 @@ class ProfilPerusahaanLogic extends GetxController {
     res.fold((l) {
       // TODO: handle error
     }, (r) {
-      state.visi.value = r.data.visi;
-      state.misi.value = r.data.misi;
-      state.tentang.value = r.data.tentang;
-      state.urlFoto.value = r.data.foto ?? '';
-      state.urlBagan.value = r.data.gambarStrukturOrganisasi ?? '';
+      state.visi.value = r.visi.value;
+      state.misi.value = r.misi.value;
+      state.tentang.value = r.tentang.value;
+      state.urlFoto.value = r.foto.value;
+      state.urlBagan.value = r.gambarStrukturOrganisasi.value;
     });
   }
 }

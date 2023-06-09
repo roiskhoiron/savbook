@@ -8,7 +8,7 @@ import '../domain/interfaces/i_login_app_service.dart';
 import '../domain/interfaces/i_login_factory.dart';
 import '../domain/interfaces/i_login_repository.dart';
 import '../domain/valueobjects/token.dart';
-import '../infrastructure/login_factory.dart';
+import '../infrastructure/factories/login_factory.dart';
 import '../infrastructure/repository/login_repository.dart';
 
 class LoginAppService implements ILoginAppService {
@@ -38,7 +38,7 @@ class LoginAppService implements ILoginAppService {
           _factory.token(token: Token(value: result.getOrElse(() => '')));
 
       // validasi data token
-      if (!token.validate()){
+      if (!token.validate()) {
         return Left(EmptyException(
             code: ExceptionCode.signInTokenIsEmpty,
             value: 'Token tidak ditemukan'));
