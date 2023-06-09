@@ -276,7 +276,7 @@ class APIProvider {
     final userId = await StorageService.getPref(key: StorageEnum.userId);
     final token = await StorageService.getPref(key: StorageEnum.authToken);
     dioOptions.headers = {
-      'Authorization': token,
+      'Authorization': 'bearer ' + token,
       'X-User-Id': userId,
       'Content-Type': 'application/json',
     };
